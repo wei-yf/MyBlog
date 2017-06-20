@@ -56,7 +56,7 @@ namespace MyBlog.Controllers
         {
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-               int n= conn.Execute("update test student=@student where id=@id", new { student = "啊实打实", id = 11 });
+               int n= conn.Execute("update test set student=@student where id=@id", new { student = "啊实打实", id = 11 });
                 return n;
             }
         }
@@ -69,20 +69,60 @@ namespace MyBlog.Controllers
                 return n;
             }
         }
-
-        // POST api/values
-        public void Post([FromBody]string value)
+        [Route("dapper/in")]
+        public HttpResponseMessage getIn()
         {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var info = conn.Query<Test>("select * from Test where id in @idlist", new { idlist = new int[3] { 13, 15, 17 } });
+                return ReturnHelp.toJson(info);
+            }
+        }
+        [Route("dapper/mul")]
+        public HttpResponseMessage getMul(int n=0)
+        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var sql = "select * from test;select * from testClass";
+                var multiReader = conn.QueryMultiple(sql);
+                var testList = multiReader.Read<Test>();
+                var classList = multiReader.Read<TestClass>();
+                if(n==0)
+                {
+                    return ReturnHelp.toJson(classList);
+                }
+                return ReturnHelp.toJson(testList);
+            }
+        }
+        [Route("dapper/join")]
+        public HttpResponseMessage getJoin(int n)
+        {
+            
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var sql = @"select t.id,t.student,c.name from test t join testClass c on t.id=c.testid ";
+                var res = conn.Query(sql);
+                var res1 = conn.Query<Test, TestClass, Test>(sql, (test, cla) =>
+                {
+                    test.tc = cla;
+                    return test;
+                },splitOn:"name");//splitOn就是Dapper对DataReader进行”从右到左“的扫描，这样就可以从sequent中获取到一个subsequent，然后遇到设置的splitOn就停止
+                if (n==0)
+                {
+                    return ReturnHelp.toJson(res);
+                }
+                return ReturnHelp.toJson(res1);
+            }
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        [Route("dapper/sp")]
+        public HttpResponseMessage getSp()
         {
-        }
-
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var result = conn.Query("sp_getTest", new { id = 5 }, commandType: CommandType.StoredProcedure);
+                return ReturnHelp.toJson(result);
+            }
         }
     }
     public class Test
@@ -90,5 +130,13 @@ namespace MyBlog.Controllers
         public int Id { get; set; }
         public string student { get; set; }
         public string sex { get; set; }
+        public TestClass  tc { get; set; }
+    }
+    public class TestClass
+    {
+        public int classid { get; set; }
+    public string    name { get; set; }
+        public string cno { get; set; }
+        public int testid { get; set; }
     }
 }
