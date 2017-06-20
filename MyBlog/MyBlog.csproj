@@ -277,6 +277,12 @@
     <Content Include="Areas\MyBlog\Views\web.config" />
     <Content Include="Areas\MyBlog\Views\Blog\Index.cshtml" />
     <Content Include="Areas\MyBlog\Views\Shared\_Layout.cshtml" />
+    <Content Include="assents\fonts\fontawesome-webfont.eot" />
+    <Content Include="assents\fonts\fontawesome-webfont.svg" />
+    <Content Include="assents\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assents\fonts\fontawesome-webfont.woff" />
+    <Content Include="assents\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assents\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
