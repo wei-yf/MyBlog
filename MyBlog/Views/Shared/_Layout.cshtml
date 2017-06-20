@@ -1,39 +1,46 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <title>@ViewBag.Title</title>
+    <title>BLOG index with sidebar & slider  | Amaze UI Examples</title>
 
     <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-
-    <link rel="icon" type="image/x-icon" href="~/assents/i/favicon.png" >
-    <link rel="icon" sizes="192*192" href="~/assents/i/app-icon72x72@2x.png" />
-    <link rel="apple-touch-icon-precomposed" href="~/assents/i/app-icon72x72@2x.png"/>
-    <meta name="msapplication-TileImage"  content="~/assents/i/app-icon72x72@2x.png" />
     <meta name="msapplication-TileColor" content="#0e90d2">
-    <link rel="stylesheet" href="~/assents/css/app.css" />
+
+    <script type="text/javascript" src="~/assents/js/jquery.min.js"></script>
+    <script type="text/javascript" src="~/assents/js/amazeui.min.js"></script>
+    <link rel="apple-touch-icon-precomposed" href="~/assents/i/app-icon72x72@2x.png" />
+    <link rel="icon" sizes="192x192" href="~/assents/i/app-icon72x72@2x.png" />
+    <link rel="icon" type="image/png" href="~/assents/i/favicon.png">
+    <meta name="msapplication-TileImage" content="~/assents/i/app-icon72x72@2x.png" />
+
     <link rel="stylesheet" href="~/assents/css/amazeui.css" />
+    <link rel="stylesheet" href="~/assents/css/app.css" />
+    
 
     @*@Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")*@
+        @Scripts.Render("~/bundles/modernizr")*@
 </head>
 <body id="blog">
+    
     <header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
-        <div class="am-u-sm-8 am-u-sm-centered">
-            <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo" />
+        <div class="am-u-sm-11 am-u-sm-centered">
+            <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo" style="margin-top:20px" />
             <h2 class="am-hide-sm-only">中国首个开源 HTML5 跨屏前端框架</h2>
         </div>
     </header>
-    <hr />
+    <hr >
     <!-- nav start -->
     <nav class="am-g am-g-fixed blog-fixed blog-nav">
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
@@ -63,9 +70,8 @@
             </form>
         </div>
     </nav>
-    <hr>
+    <hr >
     <!-- nav end -->
-
     <!-- banner start -->
     <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-article-margin">
         <div data-am-widget="slider" class="am-slider am-slider-b1" data-am-slider='{&quot;controlNav&quot;:false}'>
@@ -86,21 +92,21 @@
         </div>
     </div>
     <!-- banner end -->
-
+    
     <!-- content srart -->
     <div class="am-g am-g-fixed blog-fixed">
         <div class="am-u-md-8 am-u-sm-12">
-           @RenderBody()
-
-            <ul class="am-pagination">
+            @RenderBody()
+            
+            @*<ul class="am-pagination">
                 <li class="am-pagination-prev"><a href="">&laquo; Prev</a></li>
                 <li class="am-pagination-next"><a href="">Next &raquo;</a></li>
-            </ul>
+            </ul>*@
         </div>
         <div class="am-u-md-4 am-u-sm-12 blog-sidebar">
             <div class="blog-sidebar-widget blog-bor">
                 <h2 class="blog-text-center blog-title"><span>About ME</span></h2>
-                <img src= "/assents/i/f14.jpg" alt="about me" class="blog-entry-img">
+                <img src="/assents/i/f14.jpg" alt="about me" class="blog-entry-img">
                 <p>妹纸</p>
                 <p>
                     我是妹子UI，中国首个开源 HTML5 跨屏前端框架
@@ -139,7 +145,7 @@
         </div>
     </div>
     <!-- content end -->
-
+    <hr >
     <footer class="blog-footer">
         <div class="am-g am-g-fixed blog-fixed am-u-sm-centered blog-footer-padding">
             <div class="am-u-sm-12 am-u-md-4- am-u-lg-4">
@@ -175,14 +181,11 @@
                 </p>
             </div>
         </div>
-        <div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>
+        @*<div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>*@
     </footer>
 
 
-    @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")*@
-    <script src="~/assents/js/jquery.min.js"></script>
-    <script src="~/assents/js/amazeui.min.js"></script>
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
