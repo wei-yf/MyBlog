@@ -42,6 +42,33 @@ namespace MyBlog.Controllers
                 return (res + ss).ToString();
             }
         }
+        [Route("dapper/query")]
+        public HttpResponseMessage getQuery()
+        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                Test t = conn.Query<Test>("select * from Test where id=@id", new { id = 10 }).FirstOrDefault();
+               return  ReturnHelp.toJson(t);
+            }
+        }
+        [Route("dapper/update")]
+        public int getUpdate()
+        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+               int n= conn.Execute("update test student=@student where id=@id", new { student = "啊实打实", id = 11 });
+                return n;
+            }
+        }
+        [Route("dapper/delete")]
+        public int getDelete()
+        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                int n = conn.Execute("delete from test where id=@id", new { id = 13 });
+                return n;
+            }
+        }
 
         // POST api/values
         public void Post([FromBody]string value)
