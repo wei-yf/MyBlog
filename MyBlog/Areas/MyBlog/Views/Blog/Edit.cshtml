@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Blog/Views/Shared/_Layout.cshtml";
+
+    var tagList = new List<SelectListItem>()
+    {
+        (new SelectListItem(){ Selected=false,Text=".Net",Value=".Net" }),
+        (new SelectListItem(){ Selected=false,Text="C#",Value="C#" }),
+    };
+}
+<link rel="stylesheet" href="~/assents/css/amazeui.min.css" />
+<form action="EditeResult" method="post" onsubmit=" return getEditor()">
+    <div class="am-form">
+        <div class="am-form-group">
+            <label>主题</label>
+            @Html.TextBox("theme","","",new { placeholder = "请输入主题" })
+        </div>
+        <div class="am-form-group">
+            <label for="txtDescribe">描述</label>
+            @Html.TextBox("describe", "", "", new { placeholder = "请简要描述下问题" })
+        </div>
+        <div class="am-form-group am-form-select">
+            <label for="txtTag">标签</label>
+            @Html.DropDownList("tag", tagList, new {@class= "am-input-lg" })
+        </div>
+        <div id="weditor">
+
+        </div>
+        @Html.Hidden("editoree","0000")
+        
+
+        @*注意， 只需要引用 JS，无需引用任何 CSS ！！！*@
+        <script type="text/javascript" src="~/Scripts/Editor/JS/wangEditor.min.js"></script>
+        <script type="text/javascript">
+            var E = window.wangEditor
+            var editor = new E('#weditor')
+            // 或者 var editor = new E( document.getElementById('#editor') )
+            //editor.customConfig.uploadImgServer = '/upload'
+            editor.create()
+            function getEditor()
+            {
+                document.getElementById('tag')
+                document.getElementById('theme')
+                document.getElementById('editoree').value = editor.txt.html()
+                
+            }
+            //document.getElementById('btn2').addEventListener('click', function () {
+            //    // 读取 text
+            //    alert(editor.txt.html())
+            //}, false)
+        </script>
+        <button type="submit" class="am-btn am-btn-default">提交文章</button>
+    </div>
+</form>

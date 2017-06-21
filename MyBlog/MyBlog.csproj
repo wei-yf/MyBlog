@@ -180,6 +180,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\MyBlog\Controllers\BlogController.cs" />
+    <Compile Include="Areas\MyBlog\Controllers\EditController.cs" />
     <Compile Include="Areas\MyBlog\MyBlogAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -283,7 +284,10 @@
     <Content Include="assents\fonts\fontawesome-webfont.woff" />
     <Content Include="assents\fonts\fontawesome-webfont.woff2" />
     <Content Include="assents\fonts\FontAwesome.otf" />
+    <Content Include="Areas\MyBlog\Views\Blog\Edit.cshtml" />
+    <Content Include="Areas\MyBlog\Views\Blog\EditeResult.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Editor\JS\wangEditor.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

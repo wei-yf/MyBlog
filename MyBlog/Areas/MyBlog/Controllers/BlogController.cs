@@ -13,5 +13,16 @@ namespace MyBlog.Areas.MyBlog.Controllers
         {
             return View();
         }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public string EditeResult(string theme,string tag,string describe,string editoree)
+        {
+            return theme+tag+ describe+ editoree;
+        }
     }
 }
