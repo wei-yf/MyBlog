@@ -13,9 +13,14 @@ namespace MyBlog.Areas.MyBlog.Controllers
     public class BlogController : Controller
     {
         // GET: MyBlog/Home
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var sql = "select * from Article where id=@id";
+                Article a = conn.Query<Article>(sql, new { id = id }).FirstOrDefault();
+                return View(a);
+            }
         }
 
         public ActionResult Edit()

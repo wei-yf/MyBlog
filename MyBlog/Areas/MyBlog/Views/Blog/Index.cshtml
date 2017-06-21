@@ -1,8 +1,17 @@
-﻿
+﻿@using MyBlog.Areas.MyBlog.Models;
+@model Article
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/MyBlog/Views/Shared/_Layout.cshtml";
 }
 
-<h2>区域Index</h2>
+<article class="am-article blog-article-p">
+    <div class="am-article-bd">
+        <h1 class="am-article-title blog-text-center">@Model.theme</h1>
+    </div>
+    <div class="am-article-bd">
+        @Model.article
+    </div>
+</article>
 

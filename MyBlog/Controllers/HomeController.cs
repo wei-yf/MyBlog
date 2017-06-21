@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Dapper;
+using MyBlog.Areas.MyBlog.Models;
+
 
 namespace MyBlog.Controllers
 {
@@ -19,22 +21,7 @@ namespace MyBlog.Controllers
             {
                 aList = conn.Query<Article>("select * from Article").ToList();
             }
-                //aList.Add(a);
                 return View(aList);
         }
-
-
     }
-
-    public class Article
-    {
-        public string artUrl { get; set; }
-        public string imgUrl { get; set; }
-        public string tag { get; set; }
-        public string author { get; set; }
-        public string date { get; set; }
-        public string theme { get; set; }
-        public string describe { get; set; }
-    }
-
 }

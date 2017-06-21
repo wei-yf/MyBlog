@@ -8,6 +8,7 @@ namespace MyBlog.Areas.MyBlog.Models
 {
     public class Article
     {
+        public int id { get; set; }
         public string artUrl { get; set; }
         public string imgUrl { get; set; }
         public string tag { get; set; }
