@@ -14,14 +14,6 @@ namespace MyBlog.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-            //Article a = new Article
-            //{
-            //    artUrl = "#",
-            //    tag = ".Net",
-            //    author = "位亚飞",
-            //    date = DateTime.Now.ToString("yyyy/MM/dd"),
-            //    describe="按实际的空雾峰融规模为傻大姐服务|}S端"
-            //};
             List<Article> aList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
@@ -30,6 +22,8 @@ namespace MyBlog.Controllers
                 //aList.Add(a);
                 return View(aList);
         }
+
+
     }
 
     public class Article

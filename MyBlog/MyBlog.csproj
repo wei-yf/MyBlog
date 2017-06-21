@@ -181,6 +181,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Areas\MyBlog\Controllers\BlogController.cs" />
     <Compile Include="Areas\MyBlog\Controllers\EditController.cs" />
+    <Compile Include="Areas\MyBlog\Models\Article.cs" />
     <Compile Include="Areas\MyBlog\MyBlogAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -276,7 +277,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Areas\MyBlog\Views\web.config" />
-    <Content Include="Areas\MyBlog\Views\Blog\Index.cshtml" />
     <Content Include="Areas\MyBlog\Views\Shared\_Layout.cshtml" />
     <Content Include="assents\fonts\fontawesome-webfont.eot" />
     <Content Include="assents\fonts\fontawesome-webfont.svg" />
@@ -286,6 +286,7 @@
     <Content Include="assents\fonts\FontAwesome.otf" />
     <Content Include="Areas\MyBlog\Views\Blog\Edit.cshtml" />
     <Content Include="Areas\MyBlog\Views\Blog\EditeResult.cshtml" />
+    <Content Include="Areas\MyBlog\Views\Blog\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Editor\JS\wangEditor.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -310,7 +311,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\MyBlog\Models\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

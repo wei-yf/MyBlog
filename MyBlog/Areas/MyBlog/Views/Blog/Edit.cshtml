@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Blog/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Blog/Views/Shared/_Layout.cshtml";
 
     var tagList = new List<SelectListItem>()
     {
@@ -27,7 +27,7 @@
         <div id="weditor">
 
         </div>
-        @Html.Hidden("editoree","0000")
+        @Html.Hidden("article", "0000")
         
 
         @*注意， 只需要引用 JS，无需引用任何 CSS ！！！*@
@@ -40,10 +40,7 @@
             editor.create()
             function getEditor()
             {
-                document.getElementById('tag')
-                document.getElementById('theme')
-                document.getElementById('editoree').value = editor.txt.html()
-                
+                document.getElementById('article').value = editor.txt.html()   
             }
             //document.getElementById('btn2').addEventListener('click', function () {
             //    // 读取 text
