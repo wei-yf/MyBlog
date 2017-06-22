@@ -27,7 +27,7 @@
         <div id="weditor">
 
         </div>
-        @Html.Hidden("article", "0000")
+        @Html.Hidden("blog", "0000")
         
 
         @*注意， 只需要引用 JS，无需引用任何 CSS ！！！*@
@@ -40,7 +40,7 @@
             editor.create()
             function getEditor()
             {
-                document.getElementById('article').value = editor.txt.html()   
+                document.getElementById('blog').value = editor.txt.html()   
             }
             //document.getElementById('btn2').addEventListener('click', function () {
             //    // 读取 text

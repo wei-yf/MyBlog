@@ -12,6 +12,7 @@ namespace MyBlog.Areas.MyBlog.Controllers
 {
     public class BlogController : Controller
     {
+        [ValidateInput(false)]
         // GET: MyBlog/Home
         public ActionResult Index(int id)
         {
@@ -29,20 +30,20 @@ namespace MyBlog.Areas.MyBlog.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]//关闭注入验证
-        public ActionResult EditeResult(string theme,string tag,string describe,string article)
+        public ActionResult EditeResult(string theme,string tag,string describe,string blog)
         {
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
                 Article ar = new Article
                 {
-                    author = "位亚飞",
-                    tag = tag,
-                    date = DateTime.Now.Date.ToString("yyyy-MM-dd"),
-                    theme = theme,
-                    describe=describe,
-                    article = article
+                    Author = "位亚飞",
+                    Tag = tag,
+                    Date = DateTime.Now.Date.ToString("yyyy-MM-dd"),
+                    Theme = theme,
+                    Describe=describe,
+                    Blog = blog
                 };
-                string sql = "insert into Article(author,tag,date,theme,describe,article) values(@author,@tag,@date,@theme,@describe,@article)";
+                string sql = "insert into Article(author,tag,date,theme,describe,blog) values(@author,@tag,@date,@theme,@describe,@blog)";
                 int n =conn.Execute(sql, ar);
                 if(n>0)
                 {

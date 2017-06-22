@@ -8,15 +8,15 @@ namespace MyBlog.Areas.MyBlog.Models
 {
     public class Article
     {
-        public int id { get; set; }
-        public string artUrl { get; set; }
-        public string imgUrl { get; set; }
-        public string tag { get; set; }
-        public string author { get; set; }
-        public string date { get; set; }
-        public string theme { get; set; }
-        public string describe { get; set; }
+        public int Id { get; set; }
+        public string ArtUrl { get; set; }
+        public string ImgUrl { get; set; }
+        public string Tag { get; set; }
+        public string Author { get; set; }
+        public string Date { get; set; }
+        public string Theme { get; set; }
+        public string Describe { get; set; }
         [AllowHtml]
-        public string article { get; set; }
+        public string Blog { get; set; }
     }
 }
