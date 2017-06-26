@@ -24,7 +24,7 @@ namespace MyBlog.Controllers
                 return View(aList);
         }
 
-        public ActionResult Blog2(int id)
+        public ActionResult Blog(int id)
         {
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
