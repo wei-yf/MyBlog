@@ -23,5 +23,15 @@ namespace MyBlog.Controllers
             }
                 return View(aList);
         }
+
+        public ActionResult Blog2(int id)
+        {
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                var sql = "select * from Article where id=@id";
+                Article a = conn.Query<Article>(sql, new { id = id }).FirstOrDefault();
+                return PartialView("Blog_Detail", a);
+            }
+        }
     }
 }

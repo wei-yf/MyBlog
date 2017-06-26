@@ -1,28 +1,7 @@
 ﻿@using MyBlog.Areas.MyBlog.Models;
 @model IEnumerable<Article>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-
-@foreach (var v in Model)
-{
-    <article class="am-g blog-entry-article">
-        <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-img">
-            <img src=@v.ImgUrl alt="" class="am-u-sm-12">
-        </div>
-        <div class="am-u-lg-6 am-u-md-12 am-u-sm-12 blog-entry-text">
-            <span><a href="MyBlog/blog?id=@v.Id" class="blog-color">article &nbsp;</a></span>
-            <span> @v.Author &nbsp;</span>
-            <span>@v.Date</span>
-            <h1><a href="MyBlog/blog?id=@v.Id">@v.Theme</a></h1>
-            <p>
-                @v.Describe
-            </p>
-            <p><a href="" class="blog-continue">continue reading</a></p>
-        </div>
-    </article>
-}
+<div>
+    @Html.Partial("Index_BlogList", Model)
+</div>
 
