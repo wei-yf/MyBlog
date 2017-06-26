@@ -287,6 +287,7 @@
     <Content Include="Areas\MyBlog\Views\Blog\Edit.cshtml" />
     <Content Include="Areas\MyBlog\Views\Blog\EditeResult.cshtml" />
     <Content Include="Areas\MyBlog\Views\Blog\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Editor\JS\wangEditor.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
