@@ -13,7 +13,7 @@ namespace MyBlog.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("home/index")]
+        [Route("home/home")]
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
