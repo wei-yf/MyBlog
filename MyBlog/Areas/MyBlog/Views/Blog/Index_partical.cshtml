@@ -1,0 +1,23 @@
+﻿@using MyBlog.Areas.MyBlog.Models;
+@model IEnumerable<Article>
+
+@foreach(var v in Model)
+{
+    <tr>
+        <td>
+            <a href="#" class="am-active" onclick="del(v.Id)">编辑</a>
+        </td>
+        <td>
+            <a href="#" class="am-active" onclick="del(v.Id)">删除</a>
+        </td>
+        <td>
+            @Html.DisplayFor(t=>v.Theme)
+        </td>
+        <td>
+            @Html.DisplayFor(t=>v.Tag)
+        </td>
+        <td>
+            @Html.DisplayFor(t=>v.Describe)
+        </td>
+    </tr>
+}

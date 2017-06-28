@@ -30,34 +30,14 @@
     <link rel="stylesheet" href="~/assents/css/app.css" />
 </head>
 <body>
-    <header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
-        <div class="am-u-sm-11 am-u-sm-centered">
-            <img width="200" src="http://s.amazeui.org/media/i/brand/amazeui-b.png" alt="Amaze UI Logo" style="margin-top:20px" />
-            <h2 class="am-hide-sm-only">中国首个开源 HTML5 跨屏前端框架</h2>
-        </div>
-    </header>
     <hr>
     <!-- nav start -->
     <nav class="am-g am-g-fixed blog-fixed blog-nav">
         <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only blog-button" data-am-collapse="{target: '#blog-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
         <div class="am-collapse am-topbar-collapse" id="blog-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li class="am-active"><a href="javascript:void(0);">首页</a></li>
-                <li class="am-dropdown" data-am-dropdown>
-                    <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-                        首页布局 <span class="am-icon-caret-down"></span>
-                    </a>
-                    <ul class="am-dropdown-content">
-                        <li><a href="javascript:void(0);">1. blog-index-standard</a></li>
-                        <li><a href="javascript:void(0);">2. blog-index-nosidebar</a></li>
-                        <li><a href="javascript:void(0);">3. blog-index-layout</a></li>
-                        <li><a href="javascript:void(0);">4. blog-index-noslider</a></li>
-                    </ul>
-                </li>
-                <li><a href="javascript:void(0);">标准文章</a></li>
-                <li><a href="javascript:void(0);">图片库</a></li>
-                <li><a href="javascript:void(0);">全宽页面</a></li>
-                <li><a href="javascript:void(0);">存档</a></li>
+                @Html.ActionLink("首页", "index", "blog", new { @class = "am-active" })
+                @Html.ActionLink("编辑","edit","blog",new { @class= "am-active" })
             </ul>
             <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
                 <div class="am-form-group">
@@ -68,8 +48,8 @@
     </nav>
     <hr>
     <!-- nav end -->
-    <div class="am-g am-g-fixed blog-fixed">
-        <div class="am-u-md-8 am-u-sm-12">
+    <div class="am-g">
+        <div class="am-u-sm-12">
             @RenderBody()
         </div>
     </div>
@@ -78,6 +58,6 @@
     <footer>
         @*<div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>*@
     </footer>
-    @RenderSection("scripts", required: false)
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

@@ -1,26 +1,26 @@
 ﻿
 @{
     ViewBag.Title = "Edit";
-    //Layout = "~/Blog/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/MyBlog/Views/Shared/_Layout.cshtml";
 
     var tagList = new List<SelectListItem>()
     {
         (new SelectListItem(){ Selected=false,Text=".Net",Value=".Net" }),
         (new SelectListItem(){ Selected=false,Text="C#",Value="C#" }),
+        (new SelectListItem(){ Selected=false,Text="IIS",Value="IIS" }),
     };
 }
-<link rel="stylesheet" href="~/assents/css/amazeui.min.css" />
-<form action="EditeResult" method="post" onsubmit=" return getEditor()">
-    <div class="am-form">
-        <div class="am-form-group">
+<form action="EditeResult" method="post" onsubmit="return getEditor()">
+    <div class="am-form am-form-horizontal">
+        <div class="am-form-group am-u-sm-4">
             <label>主题</label>
-            @Html.TextBox("theme","","",new { placeholder = "请输入主题" })
+            @Html.TextBox("theme","","",new { placeholder = "请输入主题"})
         </div>
-        <div class="am-form-group">
+        <div class="am-form-group am-u-sm-4">
             <label for="txtDescribe">描述</label>
             @Html.TextBox("describe", "", "", new { placeholder = "请简要描述下问题" })
         </div>
-        <div class="am-form-group am-form-select">
+        <div class="am-form-group am-form-select am-u-sm-4">
             <label for="txtTag">标签</label>
             @Html.DropDownList("tag", tagList, new {@class= "am-input-lg" })
         </div>

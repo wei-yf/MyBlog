@@ -14,14 +14,14 @@ namespace MyBlog.Areas.MyBlog.Controllers
     {
         [ValidateInput(false)]
         // GET: MyBlog/Home
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
+            List<Article> aList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-                var sql = "select * from Article where id=@id";
-                Article a = conn.Query<Article>(sql, new { id = id }).FirstOrDefault();
-                return View(a);
+                aList = conn.Query<Article>("select * from Article").ToList();
             }
+            return View(aList);
         }
 
         public ActionResult Edit()

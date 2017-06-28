@@ -13,10 +13,8 @@ namespace MyBlog.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("home/home")]
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
             List<Article> aList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
