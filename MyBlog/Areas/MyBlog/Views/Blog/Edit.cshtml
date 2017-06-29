@@ -1,4 +1,6 @@
-﻿
+﻿@using MyBlog.Areas.MyBlog.Models;
+@model Article
+
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Areas/MyBlog/Views/Shared/_Layout.cshtml";
@@ -14,11 +16,11 @@
     <div class="am-form am-form-horizontal">
         <div class="am-form-group am-u-sm-4">
             <label>主题</label>
-            @Html.TextBox("theme","","",new { placeholder = "请输入主题"})
+            @Html.TextBox("theme","","",new { placeholder =Model==null?"请输入主题":Model.Theme})
         </div>
         <div class="am-form-group am-u-sm-4">
             <label for="txtDescribe">描述</label>
-            @Html.TextBox("describe", "", "", new { placeholder = "请简要描述下问题" })
+            @Html.TextBox("describe", "", "", new { placeholder = Model.Describe == "" ? "请简要描述下问题" : Model.Describe })
         </div>
         <div class="am-form-group am-form-select am-u-sm-4">
             <label for="txtTag">标签</label>

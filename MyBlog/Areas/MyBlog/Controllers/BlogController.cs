@@ -7,6 +7,7 @@ using Dapper;
 using System.Data;
 using MyBlog.Help;
 using MyBlog.Areas.MyBlog.Models;
+using System.Globalization;
 
 namespace MyBlog.Areas.MyBlog.Controllers
 {
@@ -24,8 +25,16 @@ namespace MyBlog.Areas.MyBlog.Controllers
             return View(aList);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
+            if(id!=null)
+            {
+                using (IDbConnection conn = DapperHelp.GetOpenConnection())
+                {
+                    Article a = conn.Query<Article>("select * from article where @id=id", new { id = id }).First();
+
+                }
+            }
             return View();
         }
         [HttpPost]
@@ -54,6 +63,18 @@ namespace MyBlog.Areas.MyBlog.Controllers
                 }
                 return View();
             }
+        }
+        public ActionResult del(int id)
+        {
+            List<Article> aList = new List<Article>();
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                int n =conn.Execute("delete  from Article where id=@id", new { id = id });
+                aList = conn.Query<Article>("select * from Article").ToList();
+            }
+            ViewBag.data = aList;
+            //return aList;
+            return PartialView("Index_partical", aList);
         }
     }
 }
