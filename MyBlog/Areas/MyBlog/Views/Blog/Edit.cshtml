@@ -13,24 +13,46 @@
     };
 }
 <form action="EditeResult" method="post" onsubmit="return getEditor()">
-    <div class="am-form am-form-horizontal">
-        <div class="am-form-group am-u-sm-4">
+    <div class="am-form">
+        <div class="am-form-group">
             <label>主题</label>
-            @Html.TextBox("theme","","",new { placeholder =Model==null?"请输入主题":Model.Theme})
+            @if (Model == null)
+            {
+                @Html.TextBox("theme", "", "", new { placeholder = "请输入主题" })
+            }
+            else
+            {
+                @Html.TextBox("theme", @Model.Theme, "", null)
+            }
         </div>
-        <div class="am-form-group am-u-sm-4">
-            <label for="txtDescribe">描述</label>
-            @Html.TextBox("describe", "", "", new { placeholder = Model.Describe == "" ? "请简要描述下问题" : Model.Describe })
-        </div>
-        <div class="am-form-group am-form-select am-u-sm-4">
+        <div class="am-form-group am-form-select">
             <label for="txtTag">标签</label>
-            @Html.DropDownList("tag", tagList, new {@class= "am-input-lg" })
+            @Html.DropDownList("tag", tagList, new { @class = "am-input-lg" })
         </div>
+
+        <div class="am-form-group ">
+            <label for="txtDescribe">描述</label>
+            @if (Model == null)
+            {
+                @Html.TextBox("describe", "", "", new { placeholder = "请简要描述下问题" })
+            }
+            else
+            {
+                @Html.TextBox("describe", @Model.Describe, "", null)
+            }
+        </div>
+
         <div id="weditor">
 
         </div>
-        @Html.Hidden("blog", "0000")
-        
+        @if (Model == null)
+        {
+            @Html.Hidden("blog", "")
+        }
+        else
+        {
+            @Html.Hidden("blog", Model.Blog)
+        }
 
         @*注意， 只需要引用 JS，无需引用任何 CSS ！！！*@
         <script type="text/javascript" src="~/Scripts/Editor/JS/wangEditor.min.js"></script>
@@ -40,9 +62,9 @@
             // 或者 var editor = new E( document.getElementById('#editor') )
             //editor.customConfig.uploadImgServer = '/upload'
             editor.create()
-            function getEditor()
-            {
-                document.getElementById('blog').value = editor.txt.html()   
+            editor.txt.html(document.getElementById('blog').value)
+            function getEditor() {
+                document.getElementById('blog').value = editor.txt.html()
             }
             //document.getElementById('btn2').addEventListener('click', function () {
             //    // 读取 text

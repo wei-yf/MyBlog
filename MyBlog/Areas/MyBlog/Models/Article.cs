@@ -19,4 +19,11 @@ namespace MyBlog.Areas.MyBlog.Models
         [AllowHtml]
         public string Blog { get; set; }
     }
+    public class AtricleYeShu
+    {
+        public int YeShu { get; set; }
+        public List<Article> ArticleList { get; set; }
+        public int PageCount { get; set; }
+        public int RowsCount { get; set; }
+    }
 }

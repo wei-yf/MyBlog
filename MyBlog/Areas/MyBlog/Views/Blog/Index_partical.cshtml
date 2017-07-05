@@ -1,8 +1,5 @@
 ﻿@using MyBlog.Areas.MyBlog.Models;
-@model IEnumerable<Article>
-
-<script src="~/Scripts/Editor/JS/my.js"></script>
-
+@model AtricleYeShu
 
 <div id="ajax-test">
     <table class="am-table am-table-striped am-table-hover">
@@ -20,12 +17,12 @@
             </th>
         </tr>
         <tbody>
-            @foreach (var v in Model)
+            @foreach (var v in Model.ArticleList as IEnumerable<Article>)
             {
                 <tr>
                     <td>
                         @*<a href="#" class="am-active" onclick="edit(@v.Id)"></a>*@
-                        @Ajax.ActionLink("编辑", "edit", "blog", new { id = @v.Id }, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "ajax-test", InsertionMode = InsertionMode.ReplaceWith });
+                        @Ajax.ActionLink("编辑", "edit", "blog", new { id = @v.Id }, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "ajax-test", InsertionMode = InsertionMode.ReplaceWith },null)
                     </td>
                     <td>
                         <a href="#" class="am-active" onclick="del(@v.Id)">删除</a>
@@ -43,5 +40,54 @@
             }
         </tbody>
     </table>
+    <hr />
+    <ul data-am-widget="pagination"
+        class="am-pagination am-pagination-select">
+        <li class="am-pagination-prev ">
+            @if ((Model.YeShu - 1) <= 0)
+            {
+                <a href="javascript:void(0);">上一页</a>
+            }
+            else
+            {
+                <a href="#" onclick="page(@Model.YeShu-1)">上一页</a>
+            }
+        </li>
+        <li class="am-pagination-select">
+            <select id="pid" onchange="pageSelect()">
+                @for (int n = 1; n <= Model.PageCount; n++)
+                {
+                    if (n == Model.YeShu)
+                    {
+                        <option value="#" class="" selected="selected">
+                            @n
+                            /
+                            @Model.PageCount
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="#" class="">
+                           @n
+                            /
+                            @Model.PageCount
+                        </option>
+                    }
+
+                }
+            </select>
+        </li>
+        <li class="am-pagination-next ">
+            @if ((Model.YeShu + 1) > Model.PageCount)
+            {
+                <a href="javascript:void(0);" >下一页</a>
+            }
+            else
+            {
+                <a href="#" onclick="page(@Model.YeShu+1)" class="">下一页</a>
+            }
+        </li>
+    </ul>
 </div>
+
 

@@ -15,24 +15,29 @@ namespace MyBlog.Areas.MyBlog.Controllers
     {
         [ValidateInput(false)]
         // GET: MyBlog/Home
-        public ActionResult Index()
+        public ActionResult Index(int yeshu=1)
         {
-            List<Article> aList = new List<Article>();
+            AtricleYeShu ays = new AtricleYeShu();
+            ays.YeShu = yeshu;
+            ays.ArticleList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-                aList = conn.Query<Article>("select * from Article").ToList();
+                ays.RowsCount = conn.Query<Article>("select * from Article").Count();
+                ays.PageCount = ays.RowsCount / 10 + 1;
+                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top "+ ((yeshu - 1) * 10 )+ " id from Article)").ToList();
             }
-            return View(aList);
+            return View(ays);
         }
 
         public ActionResult Edit(int? id)
         {
-            if(id!=null)
+            //Article a=new Article();
+            if (id!=null)
             {
                 using (IDbConnection conn = DapperHelp.GetOpenConnection())
                 {
                     Article a = conn.Query<Article>("select * from article where @id=id", new { id = id }).First();
-
+                    return View(a);
                 }
             }
             return View();
@@ -61,20 +66,39 @@ namespace MyBlog.Areas.MyBlog.Controllers
                 {
                     ViewBag.Message = "发布失败";
                 }
-                return View();
+                return RedirectToAction("Index", "Blog");
             }
         }
-        public ActionResult del(int id)
+        public ActionResult del(int id,int yeshu=1)
         {
-            List<Article> aList = new List<Article>();
+            AtricleYeShu ays = new AtricleYeShu();
+            ays.YeShu = yeshu;
+            ays.ArticleList = new List<Article>();
+
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
                 int n =conn.Execute("delete  from Article where id=@id", new { id = id });
-                aList = conn.Query<Article>("select * from Article").ToList();
+                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article)").ToList();
             }
-            ViewBag.data = aList;
+            ViewBag.data = ays.ArticleList;
             //return aList;
-            return PartialView("Index_partical", aList);
+            return PartialView("Index_partical", ays);
         }
+
+        public ActionResult Page(int yeshu=1)
+        {
+            AtricleYeShu ays = new AtricleYeShu();
+            ays.YeShu = yeshu;
+            ays.ArticleList = new List<Article>();
+            using (IDbConnection conn = DapperHelp.GetOpenConnection())
+            {
+                ays.RowsCount = conn.Query<Article>("select * from Article").Count();
+                ays.PageCount = ays.RowsCount / 10 + 1;
+                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article)").ToList();
+            }
+            ViewBag.data = ays.ArticleList;
+            return PartialView("Index_partical", ays);
+        }
+
     }
 }
