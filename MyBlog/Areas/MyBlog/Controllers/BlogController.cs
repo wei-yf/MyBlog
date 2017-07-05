@@ -18,14 +18,7 @@ namespace MyBlog.Areas.MyBlog.Controllers
         public ActionResult Index(int yeshu=1)
         {
             AtricleYeShu ays = new AtricleYeShu();
-            ays.YeShu = yeshu;
-            ays.ArticleList = new List<Article>();
-            using (IDbConnection conn = DapperHelp.GetOpenConnection())
-            {
-                ays.RowsCount = conn.Query<Article>("select * from Article").Count();
-                ays.PageCount = ays.RowsCount / 10 + 1;
-                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top "+ ((yeshu - 1) * 10 )+ " id from Article)").ToList();
-            }
+            ays = getPage(ays, yeshu);
             return View(ays);
         }
 
@@ -44,61 +37,73 @@ namespace MyBlog.Areas.MyBlog.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]//关闭注入验证
-        public ActionResult EditeResult(string theme,string tag,string describe,string blog)
+        public ActionResult EditeResult(int id,string theme,string tag,string describe,string blog)
         {
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-                Article ar = new Article
+                if(id==0)
                 {
-                    Author = "位亚飞",
-                    Tag = tag,
-                    Date = DateTime.Now.Date.ToString("yyyy-MM-dd"),
-                    Theme = theme,
-                    Describe=describe,
-                    Blog = blog
-                };
-                string sql = "insert into Article(author,tag,date,theme,describe,blog) values(@author,@tag,@date,@theme,@describe,@blog)";
-                int n =conn.Execute(sql, ar);
-                if(n>0)
-                {
-                    ViewBag.Message = "发布成功";
+                    Article ar = new Article
+                    {
+                        Author = "位亚飞",
+                        Tag = tag,
+                        Date = DateTime.Now.Date.ToString("yyyy-MM-dd"),
+                        Theme = theme,
+                        Describe = describe,
+                        Blog = blog
+                    };
+                    string sql = "insert into Article(author,tag,date,theme,describe,blog) values(@author,@tag,@date,@theme,@describe,@blog)";
+                    int n = conn.Execute(sql, ar);
+                    if (n > 0)
+                    {
+                        ViewBag.Message = "发布成功";
+                    }
+                    else
+                    {
+                        ViewBag.Message = "发布失败";
+                    }
                 }else
                 {
-                    ViewBag.Message = "发布失败";
+                    string sql = "update  article set tag=@tag,theme=@theme,describe=@describe,blog=@blog where id=@id";
+                    int n = conn.Execute(sql, new { tag = tag, theme = theme, describe = describe, blog = blog, id = id });
                 }
+                
                 return RedirectToAction("Index", "Blog");
             }
         }
         public ActionResult del(int id,int yeshu=1)
         {
             AtricleYeShu ays = new AtricleYeShu();
-            ays.YeShu = yeshu;
-            ays.ArticleList = new List<Article>();
-
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
                 int n =conn.Execute("delete  from Article where id=@id", new { id = id });
-                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article)").ToList();
             }
-            ViewBag.data = ays.ArticleList;
-            //return aList;
+            ays = getPage(ays, yeshu);
             return PartialView("Index_partical", ays);
         }
 
         public ActionResult Page(int yeshu=1)
         {
             AtricleYeShu ays = new AtricleYeShu();
+            ays = getPage(ays, yeshu);
+            return PartialView("Index_partical", ays);
+        }
+
+        private static AtricleYeShu getPage(AtricleYeShu ays,int yeshu)
+        {
             ays.YeShu = yeshu;
             ays.ArticleList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
                 ays.RowsCount = conn.Query<Article>("select * from Article").Count();
-                ays.PageCount = ays.RowsCount / 10 + 1;
+                ays.PageCount = ays.RowsCount / 10;
+                if(ays.RowsCount%10>0)
+                {
+                    ays.PageCount = ays.PageCount + 1;
+                }
                 ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article)").ToList();
             }
-            ViewBag.data = ays.ArticleList;
-            return PartialView("Index_partical", ays);
+            return ays;
         }
-
     }
 }

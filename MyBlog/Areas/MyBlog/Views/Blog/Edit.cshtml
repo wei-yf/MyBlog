@@ -11,19 +11,26 @@
         (new SelectListItem(){ Selected=false,Text="C#",Value="C#" }),
         (new SelectListItem(){ Selected=false,Text="IIS",Value="IIS" }),
     };
+    if(Model!=null)
+    {
+        tagList.Where(t => t.Value == Model.Tag).First().Selected = true;
+    }
 }
-<form action="EditeResult" method="post" onsubmit="return getEditor()">
+<form action="/MyBlog/blog/EditeResult" method="post" onsubmit="return getEditor()">
     <div class="am-form">
         <div class="am-form-group">
             <label>主题</label>
             @if (Model == null)
             {
                 @Html.TextBox("theme", "", "", new { placeholder = "请输入主题" })
+                @Html.Hidden("id", "0");
             }
             else
             {
-                @Html.TextBox("theme", @Model.Theme, "", null)
+                @Html.TextBox("theme", Model.Theme, "", null)
+                @Html.Hidden("id", Model.Id);
             }
+
         </div>
         <div class="am-form-group am-form-select">
             <label for="txtTag">标签</label>

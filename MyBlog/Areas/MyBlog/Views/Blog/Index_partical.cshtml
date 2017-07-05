@@ -22,10 +22,10 @@
                 <tr>
                     <td>
                         @*<a href="#" class="am-active" onclick="edit(@v.Id)"></a>*@
-                        @Ajax.ActionLink("编辑", "edit", "blog", new { id = @v.Id }, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "ajax-test", InsertionMode = InsertionMode.ReplaceWith },null)
+                        @Ajax.ActionLink("编辑", "edit", "blog", new { id = @v.Id }, new AjaxOptions { HttpMethod = "get", UpdateTargetId = "ajax-test", InsertionMode = InsertionMode.InsertBefore },null)
                     </td>
                     <td>
-                        <a href="#" class="am-active" onclick="del(@v.Id)">删除</a>
+                        <a href="#" class="am-active" onclick="del(@v.Id,@Model.YeShu)">删除</a>
                     </td>
                     <td>
                         @Html.DisplayFor(t => v.Theme)
