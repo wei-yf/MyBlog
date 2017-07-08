@@ -1,6 +1,12 @@
 ﻿@using MyBlog.Areas.MyBlog.Models;
 @model IEnumerable<Article>
 
+@{ 
+    <title>.Net，博客</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+}
+
 <div id="artList">
     @Html.Partial("Index_BlogList", Model)
 </div>

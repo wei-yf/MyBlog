@@ -1,9 +1,13 @@
 ﻿@using MyBlog.Areas.MyBlog.Models;
 @model Article
 
-@{ 
+@{
+    <title>@Model.Theme</title>
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <meta name="keywords" content=@Model.Tag />
+    <meta name="description" content=@Model.Describe />
 }
+
 <article class="am-article blog-article-p">
     <div class="am-article-bd">
         <h1 class="am-article-title blog-text-center">@Model.Theme</h1>
