@@ -291,6 +291,8 @@
     <Content Include="Areas\MyBlog\Views\Blog\Index_partical.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Editor\JS\jquery.particleground.js" />
+    <Content Include="Scripts\Editor\JS\jquery.particleground.min.js" />
     <Content Include="Scripts\Editor\JS\my.js" />
     <Content Include="Scripts\Editor\JS\wangEditor.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

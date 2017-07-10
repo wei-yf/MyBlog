@@ -46,7 +46,7 @@
     </nav>
     <hr>
     <!-- nav end -->
-    <div class="am-g">
+    <div class="am-g" id="particles">
         <div class="">  @*am-u-sm-12*@
             @RenderBody()
         </div>
@@ -54,7 +54,11 @@
     <!-- content end -->
     <hr>
     <footer>
-        @*<div class="blog-text-center">© 2015 AllMobilize, Inc. Licensed under MIT license. Made with love By LWXYFER</div>*@
+        <div class="blog-text-center">
+            <a href="http://www.miitbeian.gov.cn/" target="_blank">
+                <span>鲁ICP备17030766号</span>
+            </a>
+        </div>
     </footer>
     @*@RenderSection("scripts", required: false)*@
 </body>

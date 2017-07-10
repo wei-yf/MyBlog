@@ -50,7 +50,8 @@ namespace MyBlog.Areas.MyBlog.Controllers
                         Date = DateTime.Now.Date.ToString("yyyy-MM-dd"),
                         Theme = theme,
                         Describe = describe,
-                        Blog = blog
+                        Blog = blog,
+                        CreateOn=DateTime.Now
                     };
                     string sql = "insert into Article(author,tag,date,theme,describe,blog) values(@author,@tag,@date,@theme,@describe,@blog)";
                     int n = conn.Execute(sql, ar);
@@ -95,13 +96,13 @@ namespace MyBlog.Areas.MyBlog.Controllers
             ays.ArticleList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-                ays.RowsCount = conn.Query<Article>("select * from Article").Count();
+                ays.RowsCount = conn.Query<Article>("select * from Article order by createOn desc").Count();
                 ays.PageCount = ays.RowsCount / 10;
                 if(ays.RowsCount%10>0)
                 {
                     ays.PageCount = ays.PageCount + 1;
                 }
-                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article)").ToList();
+                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where id not in (select top " + ((yeshu - 1) * 10) + " id from Article) order by createOn desc").ToList();
             }
             return ays;
         }

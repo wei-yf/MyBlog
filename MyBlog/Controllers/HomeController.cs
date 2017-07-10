@@ -18,7 +18,7 @@ namespace MyBlog.Controllers
             List<Article> aList = new List<Article>();
             using (IDbConnection conn = DapperHelp.GetOpenConnection())
             {
-                aList = conn.Query<Article>("select * from Article").ToList();
+                aList = conn.Query<Article>("select * from Article order by createOn desc").ToList();
             }
                 return View(aList);
         }
