@@ -19,6 +19,7 @@ namespace MyBlog.Areas.MyBlog.Models
         [AllowHtml]
         public string Blog { get; set; }
         public DateTime CreateOn { get; set; }
+        public DateTime DeletedOn { get; set; }
     }
     public class AtricleYeShu
     {

@@ -15,7 +15,6 @@ namespace MyBlog.Areas.MyBlog.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Index(string userName, string Password)
         {
             if (userName == "admina" && Password == "123")

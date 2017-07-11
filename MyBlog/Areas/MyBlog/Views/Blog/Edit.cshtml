@@ -5,16 +5,16 @@
     ViewBag.Title = "Edit";
     Layout = "~/Areas/MyBlog/Views/Shared/_Layout.cshtml";
 
-    var tagList = new List<SelectListItem>()
-    {
-        (new SelectListItem(){ Selected=false,Text=".Net",Value=".Net" }),
-        (new SelectListItem(){ Selected=false,Text="C#",Value="C#" }),
-        (new SelectListItem(){ Selected=false,Text="IIS",Value="IIS" }),
-    };
-    if(Model!=null)
-    {
-        tagList.Where(t => t.Value == Model.Tag).First().Selected = true;
-    }
+    //var tagList = new List<SelectListItem>()
+    //{
+    //    (new SelectListItem(){ Selected=false,Text=".Net",Value=".Net" }),
+    //    (new SelectListItem(){ Selected=false,Text="C#",Value="C#" }),
+    //    (new SelectListItem(){ Selected=false,Text="IIS",Value="IIS" }),
+    //};
+    //if(Model!=null)
+    //{
+    //    tagList.Where(t => t.Value == Model.Tag).First().Selected = true;
+    //}
 }
 <form action="/MyBlog/blog/EditeResult" method="post" onsubmit="return getEditor()">
     <div class="am-form">
@@ -34,7 +34,15 @@
         </div>
         <div class="am-form-group am-form-select">
             <label for="txtTag">标签</label>
-            @Html.DropDownList("tag", tagList, new { @class = "am-input-lg" })
+            @*@Html.DropDownList("tag", tagList, new { @class = "am-input-lg" })*@
+            @if (Model == null)
+            {
+                @Html.TextBox("tag", "", "", new { placeholder = "请输入标签" })
+            }
+            else
+            {
+                @Html.TextBox("tag", Model.Theme, "", null)
+            }
         </div>
 
         <div class="am-form-group ">
