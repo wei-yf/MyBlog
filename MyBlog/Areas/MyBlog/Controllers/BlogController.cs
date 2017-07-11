@@ -11,6 +11,7 @@ using System.Globalization;
 
 namespace MyBlog.Areas.MyBlog.Controllers
 {
+    [Authorize]
     public class BlogController : Controller
     {
         [ValidateInput(false)]
