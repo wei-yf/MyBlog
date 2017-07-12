@@ -104,7 +104,7 @@ namespace MyBlog.Areas.MyBlog.Controllers
                 {
                     ays.PageCount = ays.PageCount + 1;
                 }
-                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where DeletedOn is null and id not in (select top " + ((yeshu - 1) * 10) + " id from Article) order by createOn desc").ToList();
+                ays.ArticleList = conn.Query<Article>("select top 10 * from Article where DeletedOn is null and id not in (select top " + ((yeshu - 1) * 10) + " id from Article order by createOn desc) order by createOn desc").ToList();
             }
             return ays;
         }
