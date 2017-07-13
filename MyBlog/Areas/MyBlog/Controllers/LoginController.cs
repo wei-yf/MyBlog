@@ -17,6 +17,7 @@ namespace MyBlog.Areas.MyBlog.Controllers
         [HttpPost]
         public ActionResult Index(string userName, string Password)
         {
+            
             if (userName == "admina" && Password == "123")
             {
                 FormsAuthentication.RedirectFromLoginPage(userName, false);
