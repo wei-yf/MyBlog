@@ -35,16 +35,16 @@ namespace MyBlog
                     }
                 }
             }
-
-            if(Context.User!=null)
-            {
-                var idd = Context.User.Identity as FormsIdentity;
-                if (idd != null && idd.IsAuthenticated)
-                {
-                    var roles = new string[1] { "asdasd" };
-                    Context.User = new GenericPrincipal(idd, roles);
-                }
-            }
+            //角色添加方式二，使用本地cookie
+            //if(Context.User!=null)
+            //{
+            //    var idd = Context.User.Identity as FormsIdentity;
+            //    if (idd != null && idd.IsAuthenticated)
+            //    {
+            //        var roles = new string[1] { "asdasd" };
+            //        Context.User = new GenericPrincipal(idd, roles);
+            //    }
+            //}
         }
 
         protected void Application_Start()

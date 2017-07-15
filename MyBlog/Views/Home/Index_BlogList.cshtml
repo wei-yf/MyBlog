@@ -1,6 +1,11 @@
 ﻿@using MyBlog.Areas.MyBlog.Models;
 @model AtricleYeShu
 
+
+@{
+    <meta name="keywords" content=".Net，博客" />
+    <meta name="description" content="作为一名程序员，没有自己的网站出门都不好意思跟人打招呼。思来想去我也只能做个博客网站与大家分享一下技术，小弟不才还往各位大牛不吝赐教。" />
+}
 <script type="text/javascript">
     function pageIndex(yeshu) {
     $('#artList').load('home/page', { "yeshu": yeshu }, function () { });
