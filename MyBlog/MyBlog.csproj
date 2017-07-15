@@ -184,6 +184,7 @@
     <Compile Include="Areas\MyBlog\Controllers\LoginController.cs" />
     <Compile Include="Areas\MyBlog\Models\Article.cs" />
     <Compile Include="Areas\MyBlog\MyBlogAreaRegistration.cs" />
+    <Compile Include="Controllers\CunDangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -318,6 +319,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index_BlogList.cshtml" />
     <Content Include="Views\Home\Blog_Detail.cshtml" />
+    <Content Include="Views\CunDang\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
