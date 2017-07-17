@@ -192,6 +192,7 @@
     </Compile>
     <Compile Include="Help\DapperHelp.cs" />
     <Compile Include="Help\ReturnHelp.cs" />
+    <Compile Include="Models\CunDangClass.cs" />
     <Compile Include="Models\HomeClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

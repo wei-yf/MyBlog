@@ -1,8 +1,33 @@
-﻿
+﻿@using MyBlog.Models;
+
+@model CunDangClass
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<div class="am-u-md-9 am-u-sm-12">
+    @foreach (var v in Model.YearList)
+    {
+        <div class="timeline-year">
+            <h1>@v.Year</h1>
+            <hr>
+            @foreach (var m in v.MonthList)
+            {
+                <ul>
+                    <h3>@m.Month 月</h3>
+                    <hr />
+                    @foreach (var a in m.ArticleList)
+                    {
+                        <li>
+                            <span class="am-u-sm-4 am-u-md-2 timeline-span">@a.Date</span>
+                            <span class="am-u-sm-8 am-u-md-4"><a href="#">@a.Theme</a></span>
+                            <span class="am-u-sm-4 am-u-md-6 am-hide-sm-only">@a.Tag</span>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    }
+</div>
