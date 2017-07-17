@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="am-u-md-9 am-u-sm-12">
+<div id="guidang">
     @foreach (var v in Model.YearList)
     {
         <div class="timeline-year">
@@ -22,7 +22,8 @@
                     {
                         <li>
                             <span class="am-u-sm-4 am-u-md-2 timeline-span">@a.Date</span>
-                            <span class="am-u-sm-8 am-u-md-4"><a href="#">@a.Theme</a></span>
+                            @*<span class="am-u-sm-8 am-u-md-4"><a href="#">@a.Theme</a></span>*@
+                            <span class="am-u-sm-8 am-u-md-4">@Ajax.ActionLink(@a.Theme, "blog", "home", new { id = a.Id },new AjaxOptions { UpdateTargetId = "guidang", InsertionMode = InsertionMode.Replace, HttpMethod = "GET" }, null)</span>
                             <span class="am-u-sm-4 am-u-md-6 am-hide-sm-only">@a.Tag</span>
                         </li>
                     }
