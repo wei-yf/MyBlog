@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
+using System.Threading;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -54,6 +55,21 @@ namespace MyBlog
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        /// <summary>
+        /// 设置Principal，，，程序要完成身份验证必须设置这两个地方的principal
+        /// Thread.CurrentPrincipal. 这个属性是在.NET中设置线程 principal的标准途径
+        /// HttpContext.Current.User. 这个属性是ASP.NET 专用的。
+        /// </summary>
+        /// <param name="principal"></param>
+        private void SetPrincipal(IPrincipal principal)
+        {
+            Thread.CurrentPrincipal = principal;
+            if(HttpContext.Current!=null)
+            {
+                HttpContext.Current.User = principal;
+            }
         }
     }
 }
