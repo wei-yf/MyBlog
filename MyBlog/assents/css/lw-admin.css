@@ -1,0 +1,246 @@
+
+.weather-tool {
+    display: inline-block;
+    font-size: 14px;
+    color: #333
+}
+
+    .weather-tool em {
+        font-style: normal
+    }
+
+    .weather-tool .weather-abstract {
+        line-height: 34px;
+        cursor: pointer;
+        padding-left: 7px
+    }
+
+        .weather-tool .weather-abstract span {
+            margin-right: 7px
+        }
+
+.y-weather {
+    padding: 4px;
+    color: #444;
+    width: 220px;
+    height: 124px;
+    z-index: 30;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    box-sizing: content-box;
+    position: absolute
+}
+
+    .y-weather .w-header {
+        font-size: 14px;
+        line-height: 18px
+    }
+
+        .y-weather .w-header .icon-locationweather {
+            padding-left: 5px;
+            cursor: pointer;
+            color: #406599;
+            font-size: 13px
+        }
+
+        .y-weather .w-header .wind {
+            margin: 0 6px;
+            font-size: 13px
+        }
+
+        .y-weather .w-header .air {
+            color: #fff;
+            border-radius: 4px;
+            height: 18px;
+            line-height: 18px;
+            display: inline-block;
+            font-size: 12px;
+            text-align: center;
+            padding: 0 4px
+        }
+
+    .y-weather .days-weather {
+        margin-top: 10px;
+        font-size: 14px;
+        overflow: hidden
+    }
+
+        .y-weather .days-weather .day {
+            width: 33.3%
+        }
+
+        .y-weather .days-weather span {
+            display: block;
+            text-align: center
+        }
+
+        .y-weather .days-weather .title {
+            color: #999;
+            line-height: 24px
+        }
+
+        .y-weather .days-weather .temperature {
+            white-space: nowrap;
+            line-height: 24px
+        }
+
+            .y-weather .days-weather .temperature em {
+                position: relative;
+                padding-right: 2px
+            }
+
+    .y-weather .city-select {
+        margin: 10px auto 0;
+        width: 200px;
+        background: #fff
+    }
+
+        .y-weather .city-select .select-style {
+            width: 94px
+        }
+
+        .y-weather .city-select .ok-btn, .y-weather .city-select .cancel-btn {
+            width: 94px;
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 12px;
+            background: #406599;
+            color: #ffffff;
+            border-radius: 6px
+        }
+
+            .y-weather .city-select .ok-btn:hover, .y-weather .city-select .cancel-btn:hover {
+                opacity: .8
+            }
+
+        .y-weather .city-select .cancel-btn {
+            margin-left: 10px;
+            background: #e8e8e8;
+            color: #999999
+        }
+
+    .y-weather .weather-icon {
+        margin: auto;
+        width: 48px;
+        height: 48px;
+        background: #eee
+    }
+
+    .y-weather .weather-icon-0 {
+        background: url(icon/0.png)
+    }
+
+    .y-weather .weather-icon-1 {
+        background: url(//s3.pstatp.com/toutiao/static/img/1.51a147f.png)
+    }
+
+    .y-weather .weather-icon-2 {
+        background: url(icon/2.png)
+    }
+
+    .y-weather .weather-icon-3 {
+        background: url(icon/3.png)
+    }
+
+    .y-weather .weather-icon-4 {
+        background: url(icon/4.png)
+    }
+
+    .y-weather .weather-icon-5 {
+        background: url(icon/5.png)
+    }
+
+    .y-weather .weather-icon-6 {
+        background: url(icon/6.png)
+    }
+
+    .y-weather .weather-icon-7 {
+        background: url(http://s3.pstatp.com/toutiao/static/img/7.88acb18.png)
+    }
+
+    .y-weather .weather-icon-8 {
+        background: url(icon/8.png)
+    }
+
+    .y-weather .weather-icon-9 {
+        background: url(icon/9.png)
+    }
+
+    .y-weather .weather-icon-10 {
+        background: url(icon/10.png)
+    }
+
+    .y-weather .weather-icon-13 {
+        background: url(icon/13.png)
+    }
+
+    .y-weather .weather-icon-14 {
+        background: url(icon/14.png)
+    }
+
+    .y-weather .weather-icon-15 {
+        background: url(icon/15.png)
+    }
+
+    .y-weather .weather-icon-16 {
+        background: url(icon/16.png)
+    }
+
+    .y-weather .weather-icon-17 {
+        background: url(icon/17.png)
+    }
+
+    .y-weather .weather-icon-18 {
+        background: url(icon/18.png)
+    }
+
+    .y-weather .weather-icon-19 {
+        background: url(icon/19.png)
+    }
+
+    .y-weather .weather-icon-20 {
+        background: url(icon/20-36.png)
+    }
+
+    .y-weather .weather-icon-30 {
+        background: url(icon/30.png)
+    }
+
+    .y-weather .weather-icon-31 {
+        background: url(icon/31.png)
+    }
+
+    .y-weather .weather-icon-32 {
+        background: url(icon/32.png)
+    }
+
+    .y-weather .weather-icon-33 {
+        background: url(icon/33.png)
+    }
+
+    .y-weather .weather-icon-34 {
+        background: url(icon/34.png)
+    }
+
+    .y-weather .weather-icon-35 {
+        background: url(icon/29-35.png)
+    }
+
+    .y-weather .weather-icon-36 {
+        background: url(icon/20-36.png)
+    }
+
+    .y-weather .weather-icon-44 {
+        background: url(icon/44.png)
+    }
+
+    .y-weather .weather-icon-45 {
+        background: url(icon/45-46.png)
+    }
+
+    .y-weather .weather-icon-46 {
+        background: url(icon/45-46.png)
+    }

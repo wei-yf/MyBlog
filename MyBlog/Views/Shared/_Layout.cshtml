@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="~/assents/css/amazeui.css" />
     <link rel="stylesheet" href="~/assents/css/app.css" />
+    <link rel="stylesheet" href="~/assents/css/lw-admin.css" />
 
     <script type="text/javascript">
         $(function () {
@@ -34,6 +35,26 @@
                     lineColor: '#666666'
                 });
         });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("#am-form-group").mouseover(function () {
+                $(".y-weather").attr("style", "display:block;margin-top:-17px;margin-left:845px;")
+            });
+            $(".y-weather").mouseover(function () {
+                $(".y-weather").attr("style", "display:block;margin-top:-17px;margin-left:845px;")
+            });
+            $("#am-form-group").mouseleave(function () {
+                $(".y-weather").attr("style", "display:none")
+            });
+            $(".y-weather").mouseleave(function () {
+                $(".y-weather").attr("style", "display:none")
+            });
+        });
+
+        function funcover() {
+            alert('悬浮')
+        }
     </script>
     <script>
         (function () {
@@ -72,17 +93,43 @@
             <div class="am-collapse am-topbar-collapse" id="blog-collapse">
                 <ul class="am-nav am-nav-pills am-topbar-nav">
                     <li>@Html.ActionLink("首页", "index", "home")</li>
-                    <li>@Html.ActionLink("存档","index","CunDang")</li>
+                    <li>@Html.ActionLink("存档", "index", "CunDang")</li>
+                    <li>
+                        <div class="am-form-group" id="am-form-group" style="margin-top:12px;margin-left:849px;">
+                            青岛&nbsp;&nbsp;&nbsp;多云&nbsp;&nbsp;23° &nbsp;/&nbsp; 30°
+                        </div>
+                        <div class="y-weather" style="display:none;">
+                            <div class="w-header"><span ga_event="mh_change_city" class="bui-icon icon-locationweather bui-vm">&nbsp;青岛</span> <span class="wind bui-vm">南风2级</span> <span class="air vm" style="background-color: rgb(255, 159, 45);">轻度&nbsp;103</span></div>
+                            <ul class="days-weather" style="list-style: none;padding:0;">
+                                <li class="day" style="float:left">
+                                    <span class="title">今天</span> <div class="weather-icon weather-icon-1" title="多云"></div> <span class="temperature">
+                                        <em>23</em>°
+                                        /
+                                        <em>30</em>°
+                                    </span>
+                                </li>
+                                <li class="day" style="float:left">
+                                    <span class="title">明天</span> <div class="weather-icon weather-icon-1" title="多云转雷阵雨"></div> <span class="temperature">
+                                        <em>25</em>°
+                                        /
+                                        <em>28</em>°
+                                    </span>
+                                </li>
+                                <li class="day" style="float:left">
+                                    <span class="title">后天</span> <div class="weather-icon weather-icon-7" title="小雨"></div> <span class="temperature">
+                                        <em>22</em>°
+                                        /
+                                        <em>28</em>°
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
-                <form class="am-topbar-form am-topbar-right am-form-inline" role="search">
-                    <div class="am-form-group">
-                        <input type="text" class="am-form-field am-input-sm" placeholder="站内搜索">
-                    </div>
-                </form>
             </div>
         </nav>
         <hr>
-        
+
         <!-- nav end -->
         <!-- content srart -->
         <div class="am-g am-g-fixed blog-fixed">
@@ -120,19 +167,19 @@
                     </div>
                 </div>
                 @*<div class="blog-sidebar-widget blog-bor">
-                    <h2 class="blog-title"><span>热门文章</span></h2>
-                    <ul class="am-list">
-                        <li><a href="javascript:void(0);">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
-                        <li><a href="javascript:void(0);">我把最深沉的秘密放在那里。</a></li>
-                        <li><a href="javascript:void(0);">你不懂我，我不怪你。</a></li>
-                        <li><a href="javascript:void(0);">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
-                    </ul>
-                </div>*@ 
+                        <h2 class="blog-title"><span>热门文章</span></h2>
+                        <ul class="am-list">
+                            <li><a href="javascript:void(0);">每个人都有一个死角， 自己走不出来，别人也闯不进去。</a></li>
+                            <li><a href="javascript:void(0);">我把最深沉的秘密放在那里。</a></li>
+                            <li><a href="javascript:void(0);">你不懂我，我不怪你。</a></li>
+                            <li><a href="javascript:void(0);">每个人都有一道伤口， 或深或浅，盖上布，以为不存在。</a></li>
+                        </ul>
+                    </div>*@
                 <div>
                     <script src='http://e.ejiakm.net/49415'></script>
                     <script src='http://e.ejiakm.net/49420'></script>
                 </div>
-                
+
             </div>
         </div>
     </div>
