@@ -184,6 +184,7 @@
     <Compile Include="Areas\MyBlog\Controllers\LoginController.cs" />
     <Compile Include="Areas\MyBlog\Models\Article.cs" />
     <Compile Include="Areas\MyBlog\MyBlogAreaRegistration.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\CunDangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -191,9 +192,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Help\DapperHelp.cs" />
+    <Compile Include="Help\RequestHelp.cs" />
     <Compile Include="Help\ReturnHelp.cs" />
     <Compile Include="Models\CunDangClass.cs" />
     <Compile Include="Models\HomeClass.cs" />
+    <Compile Include="Models\WeatherClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,9 +324,11 @@
     <Content Include="Views\Home\Index_BlogList.cshtml" />
     <Content Include="Views\Home\Blog_Detail.cshtml" />
     <Content Include="Views\CunDang\Index.cshtml" />
+    <Content Include="Views\Shared\WeatherLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Application\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

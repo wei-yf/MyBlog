@@ -51,10 +51,6 @@
                 $(".y-weather").attr("style", "display:none")
             });
         });
-
-        function funcover() {
-            alert('悬浮')
-        }
     </script>
     <script>
         (function () {
@@ -79,6 +75,9 @@
     </script>
 </head>
 <body>
+    @{
+        var we = (MyBlog.Models.WeatherClass)ViewBag.Weather;
+    }
     <div id="blog">
         <header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
             <div class="am-u-sm-11 am-u-sm-centered">
@@ -95,35 +94,7 @@
                     <li>@Html.ActionLink("首页", "index", "home")</li>
                     <li>@Html.ActionLink("存档", "index", "CunDang")</li>
                     <li>
-                        <div class="am-form-group" id="am-form-group" style="margin-top:12px;margin-left:849px;">
-                            青岛&nbsp;&nbsp;&nbsp;多云&nbsp;&nbsp;23° &nbsp;/&nbsp; 30°
-                        </div>
-                        <div class="y-weather" style="display:none;">
-                            <div class="w-header"><span ga_event="mh_change_city" class="bui-icon icon-locationweather bui-vm">&nbsp;青岛</span> <span class="wind bui-vm">南风2级</span> <span class="air vm" style="background-color: rgb(255, 159, 45);">轻度&nbsp;103</span></div>
-                            <ul class="days-weather" style="list-style: none;padding:0;">
-                                <li class="day" style="float:left">
-                                    <span class="title">今天</span> <div class="weather-icon weather-icon-1" title="多云"></div> <span class="temperature">
-                                        <em>23</em>°
-                                        /
-                                        <em>30</em>°
-                                    </span>
-                                </li>
-                                <li class="day" style="float:left">
-                                    <span class="title">明天</span> <div class="weather-icon weather-icon-1" title="多云转雷阵雨"></div> <span class="temperature">
-                                        <em>25</em>°
-                                        /
-                                        <em>28</em>°
-                                    </span>
-                                </li>
-                                <li class="day" style="float:left">
-                                    <span class="title">后天</span> <div class="weather-icon weather-icon-7" title="小雨"></div> <span class="temperature">
-                                        <em>22</em>°
-                                        /
-                                        <em>28</em>°
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
+                        @Html.Partial("WeatherLayout", we)
                     </li>
                 </ul>
             </div>

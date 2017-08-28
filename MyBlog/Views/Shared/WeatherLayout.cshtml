@@ -1,0 +1,111 @@
+﻿@using MyBlog.Models;
+@model WeatherClass
+
+@{
+    WeatherClass we = Model;
+}
+
+<div class="am-form-group" id="am-form-group" style="margin-top:12px;margin-left:849px;">
+    @we.data.city&nbsp;&nbsp;&nbsp;@we.data.weather.current_condition&nbsp;&nbsp;@we.data.weather.low_temperature° &nbsp;/&nbsp; @we.data.weather.high_temperature°
+</div>
+<div class="y-weather" style="display:none;">
+    <div class="w-header">
+        <span ga_event="mh_change_city" class="bui-icon icon-locationweather bui-vm">&nbsp;@we.data.city</span> <span class="wind bui-vm">@we.data.weather.wind_direction @we.data.weather.wind_level 级</span>
+        @if (@we.data.weather.aqi <= 50)
+        {/*优*/
+            <span class="air vm" style="background-color: #5cbf4c;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+        else if (@we.data.weather.aqi <= 100)
+        {/*良*/
+            <span class="air vm" style="background-color: #5cbf4c;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+        else if (@we.data.weather.aqi <= 150)
+        {/*轻度污染*/
+            <span class="air vm" style="background-color: #ff9f2d;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+        else if (@we.data.weather.aqi <= 200)
+        {/*中度污染*/
+            <span class="air vm" style="background-color: #ff9f2d;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+        else if (@we.data.weather.aqi <= 300)
+        {/*重度污染*/
+            <span class="air vm" style="background-color: #ff5f5f;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+        else
+        {/*严重污染*/
+            <span class="air vm" style="background-color: #ff5f5f;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
+        }
+    </div>
+    <script type="text/javascript">
+        $(function () {
+           function imgicon(id, iconid) {
+               switch (iconid){
+                   case 1:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 2:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 3:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 4:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 5:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 6:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 7:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 8:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 9:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 10:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 11:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 12:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   default:
+                       $('#' + id).attr("class", "weather-icon weather-icon-1");
+               }
+           }
+             imgicon("today",@we.data.weather.weather_icon_id);
+             imgicon("tomo",@we.data.weather.tomorrow_weather_icon_id);
+             imgicon("dat",@we.data.weather.dat_weather_icon_id);
+       });
+    </script>
+    <ul class="days-weather" style="list-style: none;padding:0;">
+        <li class="day" style="float:left">
+            <span class="title">今天</span> <div id="today" title=@we.data.weather.current_condition></div> <span class="temperature">
+                <em>@we.data.weather.low_temperature</em>°
+                /
+                <em>@we.data.weather.high_temperature</em>°
+            </span>
+        </li>
+        <li class="day" style="float:left">
+            <span class="title">明天</span> <div id="tomo" title=@we.data.weather.tomorrow_condition></div> <span class="temperature">
+                <em>@we.data.weather.tomorrow_low_temperature</em>°
+                /
+                <em>@we.data.weather.tomorrow_high_temperature</em>°
+            </span>
+        </li>
+        <li class="day" style="float:left">
+            <span class="title">后天</span> <div id="dat" title=@we.data.weather.dat_condition></div> <span class="temperature">
+                <em>@we.data.weather.dat_low_temperature</em>°
+                /
+                <em>@we.data.weather.dat_high_temperature</em>°
+            </span>
+        </li>
+    </ul>
+</div>

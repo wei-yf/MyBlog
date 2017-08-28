@@ -11,7 +11,7 @@ using MyBlog.Areas.MyBlog.Models;
 
 namespace MyBlog.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ApplicationController
     {
         public ActionResult Index(int yeshu=1)
         {

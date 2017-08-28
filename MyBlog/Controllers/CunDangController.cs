@@ -11,7 +11,7 @@ using MyBlog.Areas.MyBlog.Models;
 
 namespace MyBlog.Controllers
 {
-    public class CunDangController : Controller
+    public class CunDangController : ApplicationController
     {
         // GET: CunDang
         public ActionResult Index()
