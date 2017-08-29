@@ -36,10 +36,38 @@
             <span class="air vm" style="background-color: #ff5f5f;">@we.data.weather.quality_level&nbsp;@we.data.weather.aqi</span>
         }
     </div>
-    <script type="text/javascript">
+    
+    <ul class="days-weather" style="list-style: none;padding:0;">
+        <li class="day" style="float:left">
+            <span class="title">今天</span> <div id="today" title=@we.data.weather.current_condition></div> <span class="temperature">
+                <em>@we.data.weather.low_temperature</em>°
+                /
+                <em>@we.data.weather.high_temperature</em>°
+            </span>
+        </li>
+        <li class="day" style="float:left">
+            <span class="title">明天</span> <div id="tomo" title=@we.data.weather.tomorrow_condition></div> <span class="temperature">
+                <em>@we.data.weather.tomorrow_low_temperature</em>°
+                /
+                <em>@we.data.weather.tomorrow_high_temperature</em>°
+            </span>
+        </li>
+        <li class="day" style="float:left">
+            <span class="title">后天</span> <div id="dat" title=@we.data.weather.dat_condition></div> <span class="temperature">
+                <em>@we.data.weather.dat_low_temperature</em>°
+                /
+                <em>@we.data.weather.dat_high_temperature</em>°
+            </span>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
         $(function () {
            function imgicon(id, iconid) {
-               switch (iconid){
+               switch (iconid) {
+                   case 0:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
                    case 1:
                        $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
                        break;
@@ -70,10 +98,58 @@
                    case 10:
                        $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
                        break;
-                   case 11:
+                   case 13:
                        $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
                        break;
-                   case 12:
+                   case 14:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 15:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 16:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 17:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 18:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 19:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 20:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 30:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 31:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 32:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 33:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 34:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 35:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 36:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 44:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 45:
+                       $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
+                       break;
+                   case 46:
                        $('#' + id).attr("class", "weather-icon weather-icon-" + iconid);
                        break;
                    default:
@@ -84,28 +160,4 @@
              imgicon("tomo",@we.data.weather.tomorrow_weather_icon_id);
              imgicon("dat",@we.data.weather.dat_weather_icon_id);
        });
-    </script>
-    <ul class="days-weather" style="list-style: none;padding:0;">
-        <li class="day" style="float:left">
-            <span class="title">今天</span> <div id="today" title=@we.data.weather.current_condition></div> <span class="temperature">
-                <em>@we.data.weather.low_temperature</em>°
-                /
-                <em>@we.data.weather.high_temperature</em>°
-            </span>
-        </li>
-        <li class="day" style="float:left">
-            <span class="title">明天</span> <div id="tomo" title=@we.data.weather.tomorrow_condition></div> <span class="temperature">
-                <em>@we.data.weather.tomorrow_low_temperature</em>°
-                /
-                <em>@we.data.weather.tomorrow_high_temperature</em>°
-            </span>
-        </li>
-        <li class="day" style="float:left">
-            <span class="title">后天</span> <div id="dat" title=@we.data.weather.dat_condition></div> <span class="temperature">
-                <em>@we.data.weather.dat_low_temperature</em>°
-                /
-                <em>@we.data.weather.dat_high_temperature</em>°
-            </span>
-        </li>
-    </ul>
-</div>
+</script>
