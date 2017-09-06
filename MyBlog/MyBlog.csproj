@@ -192,8 +192,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Help\DapperHelp.cs" />
+    <Compile Include="Help\LogoHelp.cs" />
     <Compile Include="Help\RequestHelp.cs" />
     <Compile Include="Help\ReturnHelp.cs" />
+    <Compile Include="Help\WXHelpcs.cs" />
     <Compile Include="Models\CunDangClass.cs" />
     <Compile Include="Models\HomeClass.cs" />
     <Compile Include="Models\WeatherClass.cs" />

@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace MyBlog.Controllers
@@ -14,9 +15,38 @@ namespace MyBlog.Controllers
     {
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public HttpResponseMessage Get()
         {
-            return new string[] { "value1", "value3" };
+            Dictionary<string, string> para = new Dictionary<string, string>();
+            foreach(var item in Request.GetQueryNameValuePairs())
+            {
+                para.Add(item.Key, item.Value);
+            }
+            string nonce = "";
+            string signature="";
+            string timestamp="";
+            string echostr = "";
+            if (para.ContainsKey("nonce"))
+            {
+                nonce = para["nonce"];
+            }
+            if (para.ContainsKey("signature"))
+            {
+                signature = para["signature"];
+            }
+            if (para.ContainsKey("timestamp"))
+            {
+                timestamp = para["timestamp"];
+            }
+            if (para.ContainsKey("echostr"))
+            {
+                echostr = para["echostr"];
+            }
+
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(echostr)
+            };
         }
 
 
